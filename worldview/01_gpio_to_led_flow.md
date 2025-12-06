@@ -28,3 +28,7 @@ Middleware (Param Table / Mapping)  ←─（GPIO 無這層）
 Driver (GPIO / I2C / CPLD driver)   ←─ Kernel GPIO driver
        │
 Hardware (SoC / CPLD / LED)         ←─ Pinctrl → Reg → Physical Pin
+
+GPIO 五層主要描述 signal path：user space → kernel → pinctrl → register → LED。
+但 BMC 五層描述的是整體 architecture，包括 daemon、mapping、driver、硬體。
+GPIO 五層算是 BMC 五層裡 Driver + Hardware 的詳細拆解。
