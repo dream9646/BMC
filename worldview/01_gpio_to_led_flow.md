@@ -16,3 +16,15 @@ Pinctrl / pinmux controller
 SoC register  
 ↓  
 Physical pin / LED  
+
+【BMC 五層】                       【GPIO 五層】
+
+Application (CLI / Web / Redfish)   ←─ User Space (sysfs/libgpiod)
+       │
+Daemon (ledd / gpiod / psud)
+       │
+Middleware (Param Table / Mapping)  ←─（GPIO 無這層）
+       │
+Driver (GPIO / I2C / CPLD driver)   ←─ Kernel GPIO driver
+       │
+Hardware (SoC / CPLD / LED)         ←─ Pinctrl → Reg → Physical Pin
