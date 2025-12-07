@@ -6,3 +6,36 @@
 4. User space sysfs -> driver -> SoC -> LED.
 5. LED toggle is the first "time-based" operation.
 6. This is the base for future: blink patterns, debounce, interrupt.
++---------------------+
+|   User program      |
+|  (LED toggle app)   |
++----------+----------+
+           |
+           v
++---------------------+
+|   sysfs interface   |
+| /sys/class/gpio/... |
++----------+----------+
+           |
+           v
++---------------------+
+|  GPIO driver layer  |
+|  (gpiochip, gpiolib)|
++----------+----------+
+           |
+           v
++---------------------+
+|  Pinctrl / pinmux   |
+|  (DTS config)       |
++----------+----------+
+           |
+           v
++---------------------+
+|   SoC GPIO register |
++----------+----------+
+           |
+           v
++---------------------+
+|   Physical pin      |
+|   → LED on board    |
++---------------------+
